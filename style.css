@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.scene {
+  width: 300px;
+  height: 200px;
+  perspective: 500px;
+}
+
+.rectangle {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.face {
+  position: absolute;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.front {
+  background: hsla(0, 100%, 50%, 0.7);
+}
+.right {
+  background: hsla(60, 100%, 50%, 0.7);
+}
+.back {
+  background: hsla(120, 100%, 50%, 0.7);
+}
+.left {
+  background: hsla(180, 100%, 50%, 0.7);
+}
+.top {
+  background: hsla(240, 100%, 50%, 0.7);
+}
+.bottom {
+  background: hsla(300, 100%, 50%, 0.7);
+}
+
+/* Dimensions */
+
+.front,
+.back {
+  width: 300px;
+  height: 200px;
+}
+
+.left,
+.right {
+  width: 100px;
+  height: 200px;
+  left: 100px; /* to center the faces while we are still in absolute positionning */
+}
+
+.top,
+.bottom {
+  width: 300px;
+  height: 100px;
+  top: 50px; /* to center the faces while we are still in absolute positionning */
+}
+
+/* Transform properties */
+
+.front {
+  transform: rotateY(0deg) translateZ(50px);
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(50px);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(150px);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(150px);
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+.is-spinning {
+  animation: spinBox 10s infinite;
+}
+
+@keyframes spinBox {
+  0% {
+    transform: translateZ(-100px) rotateX(0) rotateY(0);
+  }
+  100% {
+    transform: translateZ(-100px) rotateX(360deg) rotateY(360deg);
+  }
+}
